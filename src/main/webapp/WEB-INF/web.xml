@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app>
+    <display-name>Aplicación practicas</display-name>
+
+    <context-param>
+        <description>Ruta para almacenar las imágenes</description>
+        <param-name>imagePath</param-name>
+        <param-value>"C:/apache-tomcat-9.0.102/webapps/practica-images"</param-value>
+    </context-param>
+</web-app>
