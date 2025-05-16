@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 
         }catch (SQLException sqle) {
             try {
-                response.getWriter().println("No se ha podido conectar con la base de datos");
+                response.getWriter().println("Error de conexión: " + sqle.getMessage());
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }

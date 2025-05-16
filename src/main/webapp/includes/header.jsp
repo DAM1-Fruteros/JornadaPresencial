@@ -21,6 +21,17 @@
 <body>
 
 <header>
+
+    <%
+        HttpSession currentSession = request.getSession();
+        String role = "unknown";
+        if (currentSession.getAttribute("role") != null) { //si la sesión es distinto de nulo entonces el atributo rol existe significa que hay una sesión
+            role = currentSession.getAttribute("role").toString(); //es un objeto pero lo tenemos que declarar como String
+        }
+
+        String search = request.getParameter("search");
+    %>
+
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-md navbar-light bg-white py-3">
         <div class="container">
@@ -43,11 +54,31 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="cart.jsp">
                             <i class="fas fa-shopping-cart nav-icon me-2" style="display: none;"></i>
                             <span class="nav-text">Carrito</span>
                         </a>
                     </li>
+
+                    <%
+                        if (role.equals("unknown")) {
+                    %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.jsp">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                    </li>
+                    <%
+                        } else {
+                    %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/practicas_app/logout">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                        </a>
+                    </li>
+                    <%
+                        }
+                    %>
                 </ul>
             </div>
         </div>

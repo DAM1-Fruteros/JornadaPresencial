@@ -8,9 +8,7 @@
 <%@include file="includes/header.jsp"%>
 <%@include file="includes/carousel.jsp"%>
 
-<%
-    String search =request.getParameter("search"); //Obtenemos el Id del juego
-%>
+
 <!-- Contenido principal-->
 <div class="container my-4">
     <div class="row">
@@ -24,8 +22,6 @@
 <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <%
-            HttpSession currentSession = request.getSession();
-            String role = "anonymous";
             Database database = new Database();
             database.connect();
             ProductDao productDao = new ProductDao(database.getConnection());
