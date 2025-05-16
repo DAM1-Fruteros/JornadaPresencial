@@ -1,6 +1,6 @@
 package org.example.servlet;
+
 import org.example.dao.CartDao;
-import org.example.dao.ProductDao;
 import org.example.database.Database;
 
 import javax.servlet.ServletException;
@@ -12,9 +12,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/add_cart")
+@WebServlet("/delete_cart")
 
-public class AddCartServlet extends HttpServlet {
+public class DeleteCartServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,9 +34,9 @@ public class AddCartServlet extends HttpServlet {
             Database database = new Database();
             database.connect();
             CartDao cartDao = new CartDao(database.getConnection());
-            cartDao.addCart(userId,Integer.parseInt(productId));
+            cartDao.deleteCart(userId,Integer.parseInt(productId));
 
-            response.sendRedirect("/practicas_app/index.jsp");
+            response.sendRedirect("/peliculas_app/favoritos.jsp");
 
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -45,7 +45,6 @@ public class AddCartServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
     }
 }
