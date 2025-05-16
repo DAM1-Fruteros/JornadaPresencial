@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 @WebServlet("/add_user")
 public class NewUserServlet extends HttpServlet {
@@ -40,8 +40,6 @@ public class NewUserServlet extends HttpServlet {
 
         String birthdate = request.getParameter("birthdate");
 
-        Date datebirthdate = Date.valueOf(birthdate);
-
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String role = request.getParameter("role");
@@ -55,7 +53,7 @@ public class NewUserServlet extends HttpServlet {
             User user = new User();
             user.setName(name);
             user.setSurname(surname);
-            user.setBirthdate(datebirthdate);
+            user.setBirthdate(new Date(System.currentTimeMillis()));
             user.setEmail(email);
             user.setPassword(password);
             user.setRole(role);
