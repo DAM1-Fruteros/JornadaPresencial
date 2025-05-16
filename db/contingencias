@@ -1,0 +1,5 @@
+
+DELETE FROM cart;
+DELETE FROM products;
+DELETE FROM users;
+
