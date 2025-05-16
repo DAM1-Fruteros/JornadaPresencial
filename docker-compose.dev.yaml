@@ -1,0 +1,16 @@
+version: "3.4"
+name: practicasapp
+services:
+  db:
+    image: mariadb:latest
+    container_name: practicasapp-db-dev
+    environment:
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_DATABASE: 'practicasapp'
+      MYSQL_PORT: 3306
+      MYSQL_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
