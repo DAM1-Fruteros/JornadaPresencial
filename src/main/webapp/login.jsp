@@ -28,7 +28,7 @@
 <main class="form-signin w-100 m-auto">
   <div class="container d-flex justify-content-center">
     <form>
-      <h1><i class="bi bi-book"> Electronic devices</i></h1>
+      <h1>Electronic devices <i class="fa-solid fa-mobile"></i></h1>
       <h3 class="h3 mb-3 fw-normal">Register</h3>
 
       <div class="form-floating mb-2" >

@@ -35,7 +35,8 @@
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-md navbar-light bg-white py-3">
         <div class="container">
-            <a class="navbar-brand" href="#">MiTienda</a>
+            <a class="navbar-brand" href="/practicas_app">Electronic devices</a>
+            <i class="fa-solid fa-mobile"></i>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -47,16 +48,24 @@
                             <span class="nav-text">Productos</span>
                         </a>
                     </li>
+
+                    <%
+                        if (!role.equals("unknown")){
+                    %>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="users.jsp">
                             <i class="fas fa-user nav-icon me-2" style="display: none;"></i>
-                            <span class="nav-text">Usuarios</span>
+                            <span class="nav-text">Profile</span>
                         </a>
                     </li>
+                    <%
+                        }
+                    %>
+
                     <li class="nav-item">
                         <a class="nav-link" href="cart.jsp">
                             <i class="fas fa-shopping-cart nav-icon me-2" style="display: none;"></i>
-                            <span class="nav-text">Carrito</span>
+                            <span class="nav-text">Go to cart</span>
                         </a>
                     </li>
 
