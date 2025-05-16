@@ -14,7 +14,6 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -34,24 +33,25 @@ public class EditProductServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         HttpSession currentSession = request.getSession();
-        if ((currentSession.getAttribute("role") == null) || (!currentSession.getAttribute("role").equals("admin"))){
+        if (currentSession.getAttribute("role") == null){
             response.sendRedirect("/practicas_app/login.jsp");
             return;
         }
+
+        String action = request.getParameter("action");
 
         if (!validate(request)){
             response.getWriter().print(errors.toString());
             return;
         }
-        int id = Integer.parseInt(request.getParameter("id"));
+
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         String price = request.getParameter("price");
         String quantity = request.getParameter("quantity");
         String category = request.getParameter("category");
         Part image = request.getPart("image");
-        String rate = request.getParameter("rate");
-
+        String rate  = request.getParameter("rate");
 
         try {
             Database database = new Database();
@@ -64,25 +64,41 @@ public class EditProductServlet extends HttpServlet {
             product.setQuantity(Integer.parseInt(quantity));
             product.setCategory(category);
             product.setRate(Float.parseFloat(rate));
-            product.setId(id);
-    /*
-            String filename = "film.jpg";
-            if (image.getSize() != 0) {
-                //creo un nombre de foto aleatorio y por ahora solo damos por válido jpg
-                filename = UUID.randomUUID().toString() + ".jpg";
 
-                String imagePath = "C:/apache-tomcat-9.0.102/webapps/peliculas-images";
-                InputStream inputStream = image.getInputStream(); //representación en datos de la imagen
-                Files.copy(inputStream, Path.of(imagePath + File.separator + filename));
+            String filename = "product.jpg";
+            if (action.equals("Send")) {
+                if (image.getSize() != 0) {
+                    //creo un nombre de foto aleatorio y por ahora solo damos por válido jpg
+                    filename = UUID.randomUUID().toString() + ".jpg";
+
+                    String imagePath = "C:\\Users\\Hermes\\Downloads\\apache-tomcat-9.0.102\\apache-tomcat-9.0.102\\webapps\\practicas_app_images";
+                    InputStream inputStream = image.getInputStream(); //representación en datos de la imagen
+                    Files.copy(inputStream, Path.of(imagePath + File.separator + filename));
+                }
+                product.setImage(filename);
+            } else{
+                product.setId(Integer.parseInt(request.getParameter("productId")));
             }
-            pelicula.setImagen(filename);
-*/
-            boolean edited = productDao.editProduct(product);
-            if (edited) {
-                response.getWriter().print("ok");
+
+            boolean added = false;
+            if (action.equals("Send")) {
+                added = productDao.addProduct(product);
             } else {
-                response.getWriter().print("No se ha podido actualizar el producto");
+                added = productDao.editProduct(product);
             }
+
+            if (added) {
+                response.getWriter().println("ok");
+            } else {
+                response.getWriter().println("Couldn't send the product");
+            }
+
+//            boolean added = productDao.addProduct(product);
+//            if (added) {
+//                response.getWriter().print("ok");
+//            } else {
+//                response.getWriter().print("No se ha podido registrar la película");
+//            }
 
         } catch (SQLException sqle) {
             try {
@@ -111,6 +127,7 @@ public class EditProductServlet extends HttpServlet {
         if (request.getParameter("price").isEmpty()){
             errors.add("Price is required");
         }
+
         return errors.isEmpty();
     }
 }
