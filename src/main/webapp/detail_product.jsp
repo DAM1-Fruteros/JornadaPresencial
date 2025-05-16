@@ -2,6 +2,7 @@
 <%@ page import="org.example.database.Database" %>
 <%@ page import="org.example.dao.ProductDao" %>
 <%@ page import="org.example.model.Product" %>
+<%@ page import="org.example.utils.CurrencyUtils" %>
 
 <%@include file="includes/header.jsp"%>
 
@@ -28,7 +29,7 @@
                         <p class="card-text">Description: <%= product.getDescription()%></p>
                         <p class="card-text">Category: <%= product.getCategory()%></p>
                         <p class="card-text">Rating: <%= product.getRate()%></p>
-                        <p class="card-text">Price: <%= product.getPrice()%></p>
+                        <p class="card-text">Price: <%= CurrencyUtils.format(product.getPrice())%></p>
                         <p class="card-text"><small class="text-body-secondary"><%= product.getQuantity()%> units left!</small></p>
                         <%
                             if (role.equals("user")) {

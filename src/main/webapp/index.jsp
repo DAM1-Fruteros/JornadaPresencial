@@ -55,6 +55,7 @@
                             <a href="delete_product?product_id=<%= product.getId()%>"
                                onclick="return confirm('¿Estás seguro de querer eliminar el juego?')"
                                class="btn btn-sm btn-outline-danger">Eliminar</a>
+                            
                             <%
                                 }
 

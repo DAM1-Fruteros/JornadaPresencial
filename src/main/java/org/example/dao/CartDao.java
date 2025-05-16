@@ -10,7 +10,7 @@ public class CartDao {
 
     private Connection connection;
 
-    public CartDao() {
+    public CartDao(Connection connection) {
 
         this.connection = connection;
     }
