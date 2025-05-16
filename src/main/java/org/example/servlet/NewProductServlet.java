@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 
-@WebServlet("/add_product")
+@WebServlet("/edit_product")
 @MultipartConfig
 
 public class NewProductServlet extends HttpServlet {
@@ -38,6 +38,8 @@ public class NewProductServlet extends HttpServlet {
             response.sendRedirect("/practicas_app/login.jsp");
             return;
         }
+
+        String action = request.getParameter("action");
 
         if (!validate(request)){
             response.getWriter().print(errors.toString());
@@ -65,22 +67,39 @@ public class NewProductServlet extends HttpServlet {
             product.setRate(Float.parseFloat(rate));
 
             String filename = "product.jpg";
-            if (image.getSize() != 0) {
-                //creo un nombre de foto aleatorio y por ahora solo damos por válido jpg
-                filename = UUID.randomUUID().toString() + ".jpg";
+            if (action.equals("Send")) {
+                if (image.getSize() != 0) {
+                    //creo un nombre de foto aleatorio y por ahora solo damos por válido jpg
+                    filename = UUID.randomUUID().toString() + ".jpg";
 
-                String imagePath = "C:\\Users\\Hermes\\Downloads\\apache-tomcat-9.0.102\\apache-tomcat-9.0.102\\webapps\\practicas_app_images";
-                InputStream inputStream = image.getInputStream(); //representación en datos de la imagen
-                Files.copy(inputStream, Path.of(imagePath + File.separator + filename));
+                    String imagePath = "C:\\Users\\Hermes\\Downloads\\apache-tomcat-9.0.102\\apache-tomcat-9.0.102\\webapps\\practicas_app_images";
+                    InputStream inputStream = image.getInputStream(); //representación en datos de la imagen
+                    Files.copy(inputStream, Path.of(imagePath + File.separator + filename));
+                }
+                product.setImage(filename);
+            } else{
+                product.setId(Integer.parseInt(request.getParameter("productId")));
             }
-            product.setImage(filename);
 
-            boolean added = productDao.addProduct(product);
-            if (added) {
-                response.getWriter().print("ok");
+            boolean added = false;
+            if (action.equals("Send")) {
+                added = productDao.addProduct(product);
             } else {
-                response.getWriter().print("No se ha podido registrar la película");
+                added = productDao.editProduct(product);
             }
+
+            if (added) {
+                response.getWriter().println("ok");
+            } else {
+                response.getWriter().println("Couldn't send the product");
+            }
+
+//            boolean added = productDao.addProduct(product);
+//            if (added) {
+//                response.getWriter().print("ok");
+//            } else {
+//                response.getWriter().print("No se ha podido registrar la película");
+//            }
 
         } catch (SQLException sqle) {
             try {

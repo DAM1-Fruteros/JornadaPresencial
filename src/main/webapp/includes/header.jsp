@@ -43,7 +43,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="edit_product.jsp">
                             <i class="fas fa-box nav-icon me-2" style="display: none;"></i>
                             <span class="nav-text">Productos</span>
                         </a>
