@@ -32,7 +32,7 @@
         %>
         <div class="col">
             <div class="card shadow-sm">
-                <!-- <img src="../product_images/"> -->
+                 <img src="../practicas_app_images/">
                 <div class="card-body">
                     <h4 class="card-text"><%= product.getName() %></h4>
                     <p class="card-text"><%= product.getDescription() %></p>
@@ -48,7 +48,7 @@
                             %>
                             <a href="edit_product.jsp?product_id=<%= product.getId()%>"
                                onclick="return confirm('¿Estás seguro de querer modificar el juego?')"
-                               class="btn btn-sm btn-outline-warning">Editar</a>    <!--Los que vayan directamente a otra web hará falta poner .jsp -->
+                               class="btn btn-sm btn-outline-info">Editar</a>    <!--Los que vayan directamente a otra web hará falta poner .jsp -->
                             <a href="delete_product?product_id=<%= product.getId()%>"
                                onclick="return confirm('¿Estás seguro de querer eliminar el juego?')"
                                class="btn btn-sm btn-outline-danger">Eliminar</a>
