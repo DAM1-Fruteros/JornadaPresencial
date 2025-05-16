@@ -63,7 +63,7 @@ public class ProductDao {
     }
 
     //Mostramos un producto
-    public Product getProduct (int id) throws SQLException, UserNotFoundException {
+    public Product getProduct (int id) throws SQLException, ProductNotFoundException {
         String sql = "SELECT * FROM products WHERE id = ?";
         PreparedStatement statement = null;
         ResultSet result = null;
@@ -73,7 +73,7 @@ public class ProductDao {
         result = statement.executeQuery();
 
         if (!result.next()){
-            throw new UserNotFoundException();
+            throw new ProductNotFoundException();
         }
         Product product = new Product();
         product.setId(result.getInt("id"));
