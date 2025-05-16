@@ -64,12 +64,12 @@ public class NewProductServlet extends HttpServlet {
             product.setCategory(category);
             product.setRate(Float.parseFloat(rate));
 
-            String filename = "film.jpg";
+            String filename = "product.jpg";
             if (image.getSize() != 0) {
                 //creo un nombre de foto aleatorio y por ahora solo damos por válido jpg
                 filename = UUID.randomUUID().toString() + ".jpg";
 
-                String imagePath = "C:/apache-tomcat-9.0.102/webapps/practicas-images";
+                String imagePath = "C:\\Users\\Hermes\\Downloads\\apache-tomcat-9.0.102\\apache-tomcat-9.0.102\\webapps\\practicas_app_images";
                 InputStream inputStream = image.getInputStream(); //representación en datos de la imagen
                 Files.copy(inputStream, Path.of(imagePath + File.separator + filename));
             }

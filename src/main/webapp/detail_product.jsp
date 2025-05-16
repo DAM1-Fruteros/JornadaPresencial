@@ -9,8 +9,6 @@
 <%
     int productId = Integer.parseInt(request.getParameter("product_id"));
 
-    HttpSession currentSession = request.getSession();
-    String role = "anonymous";
     Database database = new Database();
     database.connect();
     ProductDao productDao = new ProductDao(database.getConnection());

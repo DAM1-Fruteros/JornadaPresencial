@@ -3,14 +3,13 @@
 <%@ page import="org.example.dao.ProductDao" %>
 <%@ page import="org.example.model.Product" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.example.utils.CurrencyUtils" %>
 
 
 <%@include file="includes/header.jsp"%>
 <%@include file="includes/carousel.jsp"%>
 
-<%
-    String search =request.getParameter("search"); //Obtenemos el Id del juego
-%>
+
 <!-- Contenido principal-->
 <div class="container my-4">
     <div class="row">
@@ -24,8 +23,6 @@
 <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <%
-            HttpSession currentSession = request.getSession();
-            String role = "anonymous";
             Database database = new Database();
             database.connect();
             ProductDao productDao = new ProductDao(database.getConnection());
@@ -45,7 +42,7 @@
                             <%
                                 if (role.equals("user")){ //si el usuario es de tipo user le pintamos el botón de comprar sino
                             %>
-                            <a href="add_cart?product_id=<%= product.getId()%>" class="btn btn-sm btn-outline-secondary">Añadir al carrito</a> <!--Los que vayan directamente a una acción directa a través de un servlet no hará falta poner jsp -->
+                            <a href="add_cart?product_id=<%= product.getId()%>" class="btn btn-sm btn-outline-info"><i class="fa-solid fa-cart-shopping"></i></a>
                             <%
                             } else if (role.equals("admin")) {
                             %>
@@ -61,7 +58,7 @@
 
                             %>
                         </div>
-                        <small class="text-body-secondary"><%=product.getPrice() %></small>
+                        <small class="text-body-secondary"><%= CurrencyUtils.format(product.getPrice())%></small>
                     </div>
                 </div>
             </div>

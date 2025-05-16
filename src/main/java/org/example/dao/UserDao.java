@@ -18,7 +18,7 @@ public class UserDao {
 
     //Login que devuelve un objeto usuario
     public User loginUsers(String email, String password) throws SQLException, UserNotFoundException {
-        String sql = "SELECT id, nombre, email, password, role FROM usuarios WHERE email = ? AND password = ?";
+        String sql = "SELECT id, name, email, password, role FROM users WHERE email = ? AND password = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, email);
         statement.setString(2, password);

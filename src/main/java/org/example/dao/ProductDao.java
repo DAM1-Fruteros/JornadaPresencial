@@ -63,7 +63,7 @@ public class ProductDao {
     }
 
     //Mostramos un producto
-    public Product getProduct (int id) throws SQLException, ProductNotFoundException {
+    public Product getProduct(int id) throws SQLException, ProductNotFoundException {
         String sql = "SELECT * FROM products WHERE id = ?";
         PreparedStatement statement = null;
         ResultSet result = null;
