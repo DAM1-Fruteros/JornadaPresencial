@@ -55,7 +55,7 @@ public class NewUserServlet extends HttpServlet {
             User user = new User();
             user.setName(name);
             user.setSurname(surname);
-            user.setBirthdate(datebirthdate);
+            user.setBirthdate((java.sql.Date) datebirthdate);
             user.setEmail(email);
             user.setPassword(password);
             user.setRole(role);

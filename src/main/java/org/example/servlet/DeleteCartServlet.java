@@ -35,8 +35,7 @@ public class DeleteCartServlet extends HttpServlet {
             database.connect();
             CartDao cartDao = new CartDao(database.getConnection());
             cartDao.deleteCart(userId,Integer.parseInt(productId));
-
-            response.sendRedirect("/peliculas_app/favoritos.jsp");
+            response.sendRedirect("/practicas_app/cart.jsp");
 
         } catch (SQLException sqle) {
             sqle.printStackTrace();
