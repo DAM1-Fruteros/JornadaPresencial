@@ -34,7 +34,7 @@ public class ProductDao {
     }
 
     //Mostramos todos los usuarios
-    private ArrayList<User> launchQuery(String sql, String ...search) throws SQLException {
+    private ArrayList<Product> launchQuery(String sql, String ...search) throws SQLException {
         PreparedStatement statement = null;
         ResultSet result = null;
         statement = connection.prepareStatement(sql);
