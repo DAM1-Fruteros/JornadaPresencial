@@ -8,7 +8,7 @@
 
 <%
     if ((currentSession.getAttribute("role") == null) || (!currentSession.getAttribute("role").equals("admin")) ){
-        response.sendRedirect("/peliculas_app/login.jsp");
+        response.sendRedirect("/practicas_app/login.jsp");
     }
 %>
 
@@ -61,8 +61,8 @@
                 <%
                     Database database = new Database();
                     database.connect();
-                    UserDao usuarioDao = new UserDao(database.getConnection());
-                    List<User> userList = usuarioDao.getUsers(search);
+                    UserDao userDao = new UserDao(database.getConnection());
+                    List<User> userList = userDao.getUsers(search);
 
                     for (User user : userList) {
                 %>

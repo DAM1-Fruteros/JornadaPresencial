@@ -53,7 +53,9 @@ public class NewUserServlet extends HttpServlet {
             User user = new User();
             user.setName(name);
             user.setSurname(surname);
+
             user.setBirthdate(new Date(System.currentTimeMillis()));
+
             user.setEmail(email);
             user.setPassword(password);
             user.setRole(role);

@@ -40,12 +40,12 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("role", role);*/
 
             //Cuando usamos el login que devuelve el objeto Usuario
-            User usuario = userDao.loginUsers(email, password);
+            User user = userDao.loginUsers(email, password);
             HttpSession session = request.getSession();
-            session.setAttribute("email", usuario.getEmail());
-            session.setAttribute("role", usuario.getRole());
-            session.setAttribute("nombre", usuario.getName());
-            session.setAttribute("id", usuario.getId());
+            session.setAttribute("email", user.getEmail());
+            session.setAttribute("role", user.getRole());
+            session.setAttribute("name", user.getName());
+            session.setAttribute("id", user.getId());
 
 
             response.getWriter().print("ok");
