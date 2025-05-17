@@ -66,8 +66,8 @@
 
       <div class="input-group mb-2">
         <span class="input-group-text">Description</span>
-        <input type="text" id="description" name="description" placeholder="Features, properties,..." class="form-control"
-                  value="<%= product != null ? product.getDescription() : "" %>">
+        <textarea type="text" id="description" name="description" placeholder="Features, properties,..." class="form-control"
+                  value="<%= product != null ? product.getDescription() : "" %>"></textarea>
       </div>
 
       <div class="input-group mb-2">

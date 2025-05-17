@@ -43,7 +43,7 @@
                             <%
                                 if (role.equals("user")){ //si el usuario es de tipo user le pintamos el botón de comprar sino
                             %>
-                            <a href="add_cart?product_id=<%= product.getId()%>" class="btn btn-sm btn-outline-info"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a href="add_cart?product_id=<%= product.getId()%>" class="btn btn-sm btn-outline-info px-4"><i class="fa-solid fa-cart-shopping"></i></a>
                             <%
                             }  %>
                         </div>

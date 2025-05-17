@@ -2,6 +2,7 @@
 <%@ page import="org.example.dao.CartDao" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.database.Database" %>
+<%@ page import="org.example.utils.CurrencyUtils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@include file="includes/header.jsp"%>
@@ -40,13 +41,13 @@
     <div class="card mb-3 shadow-sm">
         <div class="row g-0 align-items-center">
             <div class="col-md-3 text-center">
-                <img src="images/<%= product.getImage() %>" class="img-fluid rounded-start p-2" style="max-height: 180px; object-fit: contain;" alt="<%= product.getName() %>">
+                <img src="../practicas_app_images/<%= product.getImage()%>" class="img-fluid rounded-start p-2" style="max-height: 180px; object-fit: contain;" alt="<%= product.getName() %>">
             </div>
             <div class="col-md-6">
                 <div class="card-body">
                     <h5 class="card-title mb-1"><%= product.getName() %></h5>
-                    <p class="card-text mb-1 text-muted">$<%= product.getPrice() %></p>
-                    <p class="card-text mb-1"><i class="bi bi-star-fill" style="color: gold;"></i> <%= product.getRate() %>/10</p>
+                    <p class="card-text mb-1 text-muted"><%= CurrencyUtils.format(product.getPrice())%></p>
+                    <p class="card-text mb-1"><i class="bi bi-star-fill" style="color: gold;"></i> <%= product.getRate() %>/5</p>
                 </div>
             </div>
             <div class="col-md-3 text-end pe-4">
