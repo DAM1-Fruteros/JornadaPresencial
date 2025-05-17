@@ -49,5 +49,4 @@
   </div>
 </main>
 </div>
-<div class="container py-5 mb-2"></div>
 <%@include file="includes/footer.jsp"%>

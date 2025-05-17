@@ -90,6 +90,13 @@ footer {
     border-bottom: 2px solid #dee2e6;
 }
 
+.card-image {
+    height: 180px;
+    width: 180px;
+}
+
+
+
 /* Ocultar texto en menú y mostrar iconos */
 @media (max-width: 767.98px) {
     .navbar .nav-text {
