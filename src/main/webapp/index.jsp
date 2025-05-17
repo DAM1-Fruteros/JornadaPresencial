@@ -40,7 +40,7 @@
         %>
 
         <div class="col">
-            <div class="card shadow-sm">
+            <div class="card shadow-sm card-paginacion">
                  <img src="../practicas_app_images/<%= product.getImage()%>">
                 <div class="card-body">
                     <h4 class="card-text"><%= product.getName() %></h4>
@@ -53,24 +53,45 @@
                             %>
                             <a href="add_cart?product_id=<%= product.getId()%>" class="btn btn-sm btn-outline-info"><i class="fa-solid fa-cart-shopping"></i></a>
                             <%
-                            } else if (role.equals("admin")) {
-                            %>
-                            <a href="edit_product.jsp?product_id=<%= product.getId()%>"
-                               onclick="return confirm('¿Estás seguro de querer modificar el juego?')"
-                               class="btn btn-sm btn-outline-info">Editar</a>    <!--Los que vayan directamente a otra web hará falta poner .jsp -->
-                            <a href="delete_product?product_id=<%= product.getId()%>"
-                               onclick="return confirm('¿Estás seguro de querer eliminar el juego?')"
-                               class="btn btn-sm btn-outline-danger">Eliminar</a>
-                            <%
-                                }
-
-                            %>
+                            }  %>
                         </div>
                         <small class="text-body-secondary"><%= CurrencyUtils.format(product.getPrice())%></small>
                     </div>
                 </div>
             </div>
         </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+            const cards = document.querySelectorAll(".card-paginacion");
+            const itemsPagina = 6;
+            let paginaActual = 1;
+            const totalPaginas = Math.ceil(cards.length / itemsPagina);
+
+            function mostrarPagina(pagina) {
+            cards.forEach((card, index) => {
+            card.style.display = ((index >= (pagina - 1) * itemsPagina) && (index < pagina * itemsPagina)) ? "block" : "none";
+            });
+            }
+
+            document.getElementById("btn_anterior").addEventListener("click", () => {
+            if (paginaActual > 1) {
+            paginaActual--;
+            mostrarPagina(paginaActual);
+            }
+            });
+
+            document.getElementById("btn_siguiente").addEventListener("click", () => {
+            if (paginaActual < totalPaginas) {
+            paginaActual++;
+            mostrarPagina(paginaActual);
+            }
+            });
+
+            mostrarPagina(paginaActual);
+            });
+        </script>
+
         <%
             }
         %>
@@ -79,6 +100,10 @@
 </div>
 
 
+<div class="d-flex justify-content-center mt-4">
+    <button id="btn_anterior" class="btn btn-outline-secondary  me-1">Previous</button>
+    <button id="btn_siguiente" class="btn btn-outline-secondary">Next</button>
+</div>
 
 
 

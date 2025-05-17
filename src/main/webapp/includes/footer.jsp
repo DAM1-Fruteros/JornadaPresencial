@@ -5,10 +5,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2025 Prácticas presenciales. Todos los derechos reservados.</p>
+                    <p class="mb-0">&copy; 2025@ All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">Desarrollado por Hermes, Miguel y Raúl</p>
+                    <p class="mb-0">Developed by Hermes, Miguel y Raúl</p>
                 </div>
             </div>
         </div>

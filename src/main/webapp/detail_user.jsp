@@ -25,7 +25,7 @@
     <div class="row justify-content-center">
         <div class="col-md-7">
             <div class="card shadow-lg rounded-2">
-                <div class="card-header bg-black text-white text-center">
+                <div class="card-header bg-white text-black text-center">
                     <h3 class="mb-0">Detail of User</h3>
                 </div>
                 <div class="card-body p-4">

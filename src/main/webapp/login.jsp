@@ -25,6 +25,7 @@
   });
 </script>
 
+<div class="container py-5">
 <main class="form-signin w-100 m-auto">
   <div class="container d-flex justify-content-center">
     <form>
@@ -40,14 +41,13 @@
         <label for="floatingPassword">Password</label>
       </div>
       <div class="mb-2">
-        <input class="btn btn-warning w-100 py-2" type="submit" value="Iniciar sesión">
+        <input class="btn btn-warning w-100 py-2" type="submit" value="Login">
       </div>
-      <div class="mb-2">
-        Haven't you already got an account? <a href="#" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Regístrate</a></p>
-      </div>
+
       <div class="mb-2" id="result"></div>
     </form>
   </div>
 </main>
-
+</div>
+<div class="container py-5 mb-2"></div>
 <%@include file="includes/footer.jsp"%>
