@@ -1,4 +1,4 @@
-﻿# JornadaPresencial
+﻿# Jornada Presencial Mayo San Valero
 # Proyecto Aplicación web con Java/JSP con Servlets, AJAX y MariaDB
 
 Este proyecto es una aplicación web desarrollada en Java utilizando JSP para la interfaz de usuario, Servlets para la lógica de negocio y AJAX para la comunicación asíncrona con los Servlets. Los datos se almacenan en una base de datos MariaDB. El proyecto sigue el patrón DAO para la interacción con la base de datos y se despliega en Apache Tomcat.
