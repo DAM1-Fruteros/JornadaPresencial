@@ -88,6 +88,56 @@
                     }
                 %>
                 </tbody>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const tabla = document.querySelector(".table");
+                        if (!tabla) {
+                            console.warn("No se encontró la tabla");
+                            return;
+                        }
+
+                        const filas = tabla.querySelectorAll("tbody tr");
+                        const itemsPagina = 6;
+                        let paginaActual = 1;
+                        const totalPaginas = Math.ceil(filas.length / itemsPagina);
+
+                        console.log("Filas encontradas:", filas.length);
+                        console.log("Total páginas:", totalPaginas);
+
+                        function mostrarPagina(pagina) {
+                            filas.forEach((fila, index) => {
+                                fila.style.display = ((index >= (pagina - 1) * itemsPagina) && (index < pagina * itemsPagina)) ? "table-row" : "none";
+                            });
+                        }
+
+                        const btnAnterior = document.getElementById("btn_anterior");
+                        const btnSiguiente = document.getElementById("btn_siguiente");
+
+                        if (!btnAnterior || !btnSiguiente) {
+                            console.warn("Botones de paginación no encontrados");
+                            return;
+                        }
+
+                        btnAnterior.addEventListener("click", () => {
+                            if (paginaActual > 1) {
+                                paginaActual--;
+                                mostrarPagina(paginaActual);
+                            }
+                        });
+
+                        btnSiguiente.addEventListener("click", () => {
+                            if (paginaActual < totalPaginas) {
+                                paginaActual++;
+                                mostrarPagina(paginaActual);
+                            }
+                        });
+
+                        mostrarPagina(paginaActual);
+                    });
+                </script>
+
+
             </table>
         </div>
 
@@ -98,7 +148,7 @@
         <button id="btn_siguiente" class="btn btn-outline-secondary">Siguiente</button>
     </div>
 
-    <script src="./scripts/script_paginacion_tabla.js"></script>
+
 
 
 <%@include file="includes/footer.jsp"%>

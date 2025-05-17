@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const filas = document.querySelectorAll("tbody tr");
-    const itemsPagina = 8;
+    const itemsPagina = 6;
     let paginaActual = 1;
     const totalPaginas = Math.ceil(filas.length / itemsPagina);
 

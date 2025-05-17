@@ -15,6 +15,8 @@
     try {
         Product product = productDao.getProduct(productId);
 %>
+
+<div class="container py-5">
     <div class="container d-flex justify-content-center">
         <div class="card mb-3" style="max-width: 700px;">
             <div class="row g-0">
@@ -48,7 +50,8 @@
             </div>
         </div>
     </div>
-
+</div>
+<div class="container py-5"></div>
 <%
 } catch (ProductNotFoundException pnfe) {
 %>
