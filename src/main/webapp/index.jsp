@@ -31,7 +31,9 @@
 
         <div class="col">
             <div class="card shadow-sm card-paginacion">
-                 <img src="../practicas_app_images/<%= product.getImage()%>">
+                <div class="d-flex align-items-center justify-content-center card-index-image">
+                 <img src="../practicas_app_images/<%= product.getImage()%>" style="width:150px; height:130px;">
+                </div>
                 <div class="card-body">
                     <h4 class="card-text"><%= product.getName() %></h4>
                     <p class="card-text"><%= product.getDescription() %></p>
