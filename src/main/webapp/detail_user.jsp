@@ -12,7 +12,7 @@
 
 
 <%
-    int userId = Integer.parseInt(request.getParameter("user_id"));
+    userId = Integer.parseInt(request.getParameter("user_id"));
     Database database = new Database();
     database.connect();
     UserDao userDao = new UserDao(database.getConnection());

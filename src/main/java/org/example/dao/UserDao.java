@@ -112,7 +112,7 @@ public class UserDao {
 
     //Añadimos un usuario
     public boolean addUser (User user) throws SQLException {
-        String sql = "INSERT INTO users (name, surmane, birthdate, email, password, role, active) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO users (name, surname, birthdate, email, password, role, active) VALUES (?,?,?,?,?,?,?)";
         PreparedStatement statement = null;
 
         statement = connection.prepareStatement(sql);
@@ -150,11 +150,11 @@ public class UserDao {
     }
 
     //Borramos un usuario
-    public boolean deleteUser(int usuarioId) throws SQLException {
-        String sentenciasql = "DELETE FROM usuarios WHERE id=?";
+    public boolean deleteUser(int userId) throws SQLException {
+        String sentenciasql = "DELETE FROM users WHERE id=?";
         PreparedStatement statement = null;
         statement = connection.prepareStatement(sentenciasql);
-        statement.setInt(1, usuarioId);
+        statement.setInt(1, userId);
 
         int affectedRows = statement.executeUpdate();
 

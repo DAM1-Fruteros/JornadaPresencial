@@ -14,7 +14,7 @@
     if ((currentSession.getAttribute("role") == null) || (currentSession.getAttribute("id") == null)){
         response.sendRedirect("peliculas_app/login.jsp");
     }
-    int userId = Integer.parseInt(request.getParameter("user_id"));
+    userId = Integer.parseInt(request.getParameter("user_id"));
     if (!role.equals("admin") && userId != userId) {
         response.sendRedirect("practicas_app/login.jsp");
     }
