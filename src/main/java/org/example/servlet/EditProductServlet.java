@@ -102,7 +102,7 @@ public class EditProductServlet extends HttpServlet {
 
         } catch (SQLException sqle) {
             try {
-                response.getWriter().println("No se ha podido conectar con la base de datos");
+                response.getWriter().println("Database couldn't be connected");
                 sqle.printStackTrace();
                 response.getWriter().println("Error SQL: " + sqle.getMessage());
             } catch (IOException ioe){

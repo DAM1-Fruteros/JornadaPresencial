@@ -65,11 +65,11 @@ public class NewUserServlet extends HttpServlet {
             if (added) {
                 response.getWriter().print("ok");
             } else {
-                response.getWriter().print("No se ha podido registrar el usuario");
+                response.getWriter().print("User couldn't be registered");
             }
         } catch (SQLException sqle){
             try{
-                response.getWriter().println("No se ha podido conectar con la base de datos");
+                response.getWriter().println("Database couldn't be connected");
                 sqle.printStackTrace();
                 response.getWriter().println("Error SQL: " + sqle.getMessage());
             }catch (IOException ioe){
