@@ -28,7 +28,7 @@
                         <h5 class="card-title"><%= product.getName()%></h5>
                         <p class="card-text">Description: <%= product.getDescription()%></p>
                         <p class="card-text">Category: <%= product.getCategory()%></p>
-                        <p class="card-text">Rating: <%= product.getRate()%></p>
+                        <p class="card-text">Rating: <%= product.getRate()%> <i class="bi bi-star-fill" style="color: gold;"></i></p>
                         <p class="card-text">Price: <%= CurrencyUtils.format(product.getPrice())%></p>
                         <p class="card-text"><small class="text-body-secondary"><%= product.getQuantity()%> units left!</small></p>
                         <%
