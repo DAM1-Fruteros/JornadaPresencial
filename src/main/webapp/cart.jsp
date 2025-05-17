@@ -6,11 +6,20 @@
 
 <%@include file="includes/header.jsp"%>
 
+
 <%
-    if ((currentSession.getAttribute("role") == null) || (!currentSession.getAttribute("role").equals("user")) ){
-        response.sendRedirect("/practias_app/login.jsp");
+
+    if (currentSession == null || currentSession.getAttribute("role") == null || !currentSession.getAttribute("role").equals("user")) {
+        response.sendRedirect("/practicas_app/login.jsp");
+        return;
+    }
+
+    if (userId == null) {
+        response.sendRedirect("/practicas_app/login.jsp");
+        return;
     }
 %>
+
 
 <div class="container mt-5">
     <h2 class="mb-4">Your Cart, <i><%= currentSession.getAttribute("name") %></i></h2>
@@ -57,17 +66,10 @@
         }
     %>
 
-    <div class="d-flex justify-content-between mt-4">
-        <button id="btn_anterior" class="btn btn-outline-secondary">Back</button>
-        <button id="btn_siguiente" class="btn btn-outline-secondary">Front</button>
-    </div>
 </div>
 
-
+<div class="container py-5 mb-6"></div>
 <script src="./scripts/script_paginacion.js"></script>
-
-
-
 
 
 <%@include file="includes/footer.jsp"%>

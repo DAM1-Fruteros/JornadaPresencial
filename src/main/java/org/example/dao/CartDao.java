@@ -44,7 +44,7 @@ public class CartDao {
     }
 
     public boolean addCart(int userId, int productId) throws SQLException {
-        String sql = "INSERT INTO favoritos (id_user, id_product) VALUES (?,?)";
+        String sql = "INSERT INTO cart (id_user, id_product) VALUES (?,?)";
         PreparedStatement statement = null;
 
         statement = connection.prepareStatement(sql);
