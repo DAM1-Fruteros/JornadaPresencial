@@ -31,20 +31,23 @@
                         <p class="card-text">Rating: <%= product.getRate()%> <i class="bi bi-star-fill" style="color: gold;"></i></p>
                         <p class="card-text">Price: <%= CurrencyUtils.format(product.getPrice())%></p>
                         <p class="card-text"><small class="text-body-secondary"><%= product.getQuantity()%> units left!</small></p>
-                        <%
-                            if (role.equals("user")) {
-                        %>
-                        <a href="add_cart?product_id=<%= product.getId()%>" type="button" class="btn btn-outline-warning">Add to cart</a>
-                        <%
-                        } else if (role.equals("admin")) {
-                        %>
-                        <a href="edit_product.jsp?product_id=<%= product.getId()%>" type="button" class="btn btn-outline-info">Edit</a>
-                        <a href="delete_product?product_id=<%= product.getId()%>" type="button"
-                           onclick="return confirm('Are you sure you want to delete it?')"
-                           class="btn btn-outline-danger">Delete</a>
-                        <%
-                            }
-                        %>
+
+                        <div class="text-end mt-3">
+                            <%
+                                if (role.equals("user")) {
+                            %>
+                            <a href="add_cart?product_id=<%= product.getId()%>" type="button" class="btn btn-outline-warning">Add to cart</a>
+                            <%
+                            } else if (role.equals("admin")) {
+                            %>
+                            <a href="edit_product.jsp?product_id=<%= product.getId()%>" type="button" class="btn btn-info">Edit</a>
+                            <a href="delete_product?product_id=<%= product.getId()%>" type="button"
+                               onclick="return confirm('Are you sure you want to delete it?')"
+                               class="btn btn-danger">Delete</a>
+                            <%
+                                }
+                            %>
+                        </div>
                     </div>
                 </div>
             </div>
