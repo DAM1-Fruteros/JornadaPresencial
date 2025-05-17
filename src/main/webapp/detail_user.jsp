@@ -12,85 +12,35 @@
 
 
 <%
-    int usuarioId = Integer.parseInt(request.getParameter("usuario_id"));
+    int userId = Integer.parseInt(request.getParameter("user_id"));
     Database database = new Database();
     database.connect();
     UserDao userDao = new UserDao(database.getConnection());
     try{
-        User usuario = userDao.getUser(usuarioId);
+        User user = userDao.getUser(userId);
 %>
 
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("form").on("submit", function(event) {
-            event.preventDefault();
-            const formValue = $(this).serialize();
-            $.ajax({
-                url:"edit_user",
-                type: "POST",
-                data: formValue,
-                statusCode: {
-                    200: function(response) {
-                        console.log("Respuesta del servidor:", response);
-                        if (response === "ok") {
-                            window.location.href = "/practicas_app/detail_user.jsp?user_id=<%=user.getId()%>";
-                        } else {
-                            $("#result").html("<div class='alert alert-danger' role='alert'>" + response + "</div>");
-                        }
-                    },
-                    404: function (response) {
-                        $("#result").html("<div class='alert alert-danger' role='alert'>Error al enviar datos</div>");
-                    },
-                    500: function(response){
-                        console.error("Server error:", response);
-                        $("#result").html("<div class='alert alert-danger' role='alert' " + response.toString() + "</div>");
-                    }
-                }
-            });
-        });
-    });
-</script>
-
-
-
-/********/
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-7">
             <div class="card shadow-lg rounded-2">
                 <div class="card-header bg-black text-white text-center">
-                    <h3 class="mb-0">Detalle del Usuario</h3>
+                    <h3 class="mb-0">Detail of User</h3>
                 </div>
                 <div class="card-body p-4">
-                    <p><strong>Nombre:</strong> <%= usuario.getNombre() %></p>
-                    <p><strong>Apellidos:</strong> <%= usuario.getApellido() %></p>
-                    <p><strong>Fecha Nacimiento:</strong> <%= usuario.getFechaNacimiento() %></p>
-                    <p><strong>Edad:</strong> <%= usuario.getEdad() %></p>
-                    <p><strong>Email:</strong> <%= usuario.getEmail() %></p>
-                    <% if (role.equals ("admin")){
-                    %>
-                    <p><strong>Rol:</strong> <%= usuario.getRole() %></p>
-                    <p><strong>Activo:</strong> <%= usuario.isActivo() ? "SI" : "No" %></p>
-                    <p><strong>Valoración:</strong> <%= usuario.getValoracion() %></p>
-                    <% }
-                    %>
+                    <p><strong>Name:</strong> <%= user.getName() %></p>
+                    <p><strong>Surname:</strong> <%= user.getSurname() %></p>
+                    <p><strong>Birthdate:</strong> <%= user.getBirthdate() %></p>
+                    <p><strong>Email:</strong> <%= user.getEmail() %></p>
+                    <p><strong>Rol:</strong> <%= user.getRole() %></p>
+                    <p><strong>Active:</strong> <%= user.isActive() ? "Yes" : "No" %></p>
                 </div>
-                <div class="card-footer text-end">
-                    <% if (role.equals("usuario")){
-                    %>
-                    <a href="index.jsp" class="btn btn-secondary btn-sm">Volver</a>
-                    <a href="edit_usuario.jsp?usuario_id=<%=usuario.getId()%>" class="btn btn-warning btn-sm">Editar</a>
 
-                    <%
-                    }else if (role.equals("admin")){
-                    %>
-                    <a href="usuarios.jsp" class="btn btn-secondary btn-sm">Volver</a>
-                    <a href="edit_usuario.jsp?usuario_id=<%=usuario.getId()%>" class="btn btn-warning btn-sm">Editar</a>
-                    <a href="delete_usuario?usuario_id=<%=usuario.getId()%>" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar permanentemente?')">Eliminar</a>
-                    <%
-                        }
-                    %>
+                <div class="card-footer text-end">
+                    <a href="users.jsp" class="btn btn-secondary btn-sm">Return</a>
+                    <a href="edit_user.jsp?user_id=<%=user.getId()%>" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="delete_user?user_id=<%=user.getId()%>" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete permanently?')">Delete</a>
                 </div>
             </div>
         </div>
@@ -98,9 +48,9 @@
 </div>
 
 <%
-} catch ( UsuarioNotFoundException unfe){
+} catch ( UserNotFoundException unfe){
 %>
-<%@ include file="includes/usuario_not_found.jsp"%>
+<%@ include file="includes/user_not_found.jsp"%>
 <%
     }
 %>

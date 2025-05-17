@@ -9,7 +9,9 @@
 <%@include file="includes/header.jsp"%>
 <%@include file="includes/carousel.jsp"%>
 
-
+<%
+    String search = request.getParameter("search");
+%>
 <!-- Contenido principal-->
 <div class="container my-4">
     <div class="row">
@@ -20,16 +22,23 @@
     </div>
 </div>
 
+
 <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <form  method="get" action="<%=request.getRequestURI()%>" class="input-group">
+            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+            <input type="text" name="search" id="search" class="form-control border-start-0" placeholder="Search by name" value="<%= search != null ? search : "" %>" >
+        </form>
+    </div>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <%
             Database database = new Database();
             database.connect();
             ProductDao productDao = new ProductDao(database.getConnection());
-
             List<Product> productList = productDao.getProducts(search);
             for (Product product: productList){
         %>
+
         <div class="col">
             <div class="card shadow-sm">
                  <img src="../practicas_app_images/<%= product.getImage()%>">
