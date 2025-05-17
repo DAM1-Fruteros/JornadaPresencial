@@ -35,13 +35,7 @@
                             <input type="text" name="search" id="search" class="form-control border-start-0" placeholder="Buscar por nombre" value="<%= search != null ? search : "" %>" >
                         </form>
                     </div>
-                    <div class="col-md-3">
-                        <select class="form-select">
-                            <option selected>Todos los estados</option>
-                            <option>Activo</option>
-                            <option>Inactivo</option>
-                        </select>
-                    </div>
+
 
                 </div>
             </div>
@@ -77,7 +71,10 @@
                             </div>
                         </td>
                         <td><%=user.getEmail()%></td>
-                        <td><span class="user-status status-active"></span> <%= user.isActive() ? "ACTIVE" : "NO ACTIVE" %></td>
+                        <td>
+                            <span class="user-status <%= user.isActive() ? "status-active" : "status-inactive" %>"></span>
+                            <%= user.isActive() ? "ACTIVE" : "NO ACTIVE" %>
+                        </td>
                         <td class="text-center">
                             <a href="detail_user.jsp?user_id=<%=user.getId()%>" class="btn btn-sm btn-outline-primary btn-custom">
                                 <i class="bi bi-eye me-1"></i>Detalles
