@@ -52,3 +52,6 @@ La aplicación implementa un sistema de roles para diferenciar entre usuarios no
 
 * Este proyecto utiliza el patrón DAO para organizar la capa de acceso a datos, facilitando el mantenimiento y la separación de responsabilidades.
 * Las llamadas AJAX permiten una experiencia de usuario más fluida al actualizar partes de la página sin necesidad de recargas completas.
+
+PRESENTACIÓN
+https://view.genially.com/6827733355a4ef202f20c114/dossier-app-web-electronicdevices
