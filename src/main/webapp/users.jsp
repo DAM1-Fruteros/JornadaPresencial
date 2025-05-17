@@ -19,10 +19,10 @@
     <div class="container py-5">
         <div class="row mb-4">
             <div class="col-md-8">
-                <h2 class="mb-0">Gestión de Usuarios</h2>
+                <h2 class="mb-0">User Management</h2>
             </div>
             <div class="col-md-4 text-md-end">
-                <button class="btn btn-primary"><i class="bi bi-plus-circle me-2"></i>Nuevo Usuario</button>
+                <button class="btn btn-primary"><i class="bi bi-plus-circle me-2"></i>New User</button>
             </div>
         </div>
 
@@ -32,7 +32,7 @@
                     <div class="col-md-4">
                         <form  method="get" action="<%=request.getRequestURI()%>" class="input-group">
                             <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
-                            <input type="text" name="search" id="search" class="form-control border-start-0" placeholder="Buscar por nombre, correo o role" value="<%= search != null ? search : "" %>" >
+                            <input type="text" name="search" id="search" class="form-control border-start-0" placeholder="Buscar por nombre" value="<%= search != null ? search : "" %>" >
                         </form>
                     </div>
                     <div class="col-md-3">

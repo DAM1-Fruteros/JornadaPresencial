@@ -24,12 +24,19 @@
 
     <%
         HttpSession currentSession = request.getSession();
-        String role = "unknown";
-        if (currentSession.getAttribute("role") != null) { //si la sesión es distinto de nulo entonces el atributo rol existe significa que hay una sesión
-            role = currentSession.getAttribute("role").toString(); //es un objeto pero lo tenemos que declarar como String
+        String role = "anonymous";
+        Integer userId = null;
+        String name = null;
+        if (currentSession.getAttribute("role") !=null){
+            role = currentSession.getAttribute("role").toString();
         }
-
-        String search = request.getParameter("search");
+        if (currentSession.getAttribute("id") !=null){
+            //añadimos esta linea para coger id cuando pasamos usuario y cogemos tb id
+            userId = (int) currentSession.getAttribute("id");
+        }
+        if (currentSession.getAttribute("name") !=null) {
+            name = currentSession.getAttribute("name").toString();
+        }
     %>
 
     <!-- Barra de navegación -->
@@ -56,7 +63,7 @@
                     %>
 
                     <%
-                        if (!role.equals("unknown")){
+                        if (!role.equals("anonymous")){
                     %>
                     <li class="nav-item">
                         <a class="nav-link" href="users.jsp">
@@ -74,7 +81,7 @@
 
                     <%
                         }
-                        if (role.equals("unknown")) {
+                        if (role.equals("anonymous")) {
                     %>
                     <li class="nav-item">
                         <a class="nav-link" href="login.jsp">
