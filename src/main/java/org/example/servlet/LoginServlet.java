@@ -32,12 +32,6 @@ public class LoginServlet extends HttpServlet {
             Database database = new Database();
             database.connect();
             UserDao userDao = new UserDao(database.getConnection());
-            /*Cuando usamos el login que solo devuelve el role
-            String role = usuarioDao.loginUsers(email, password);
-
-            HttpSession session = request.getSession();
-            session.setAttribute("email", email);
-            session.setAttribute("role", role);*/
 
             //Cuando usamos el login que devuelve el objeto Usuario
             User user = userDao.loginUsers(email, password);
@@ -52,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 
         }catch (SQLException sqle) {
             try {
-                response.getWriter().println("Error de conexión: " + sqle.getMessage());
+                response.getWriter().println("Connexion error: " + sqle.getMessage());
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }

@@ -83,7 +83,7 @@
 
       <div class="input-group mb-2">
         <span class="input-group-text">Price</span>
-        <input type="text" id="price" name="price" placeholder="900€" class="form-control"
+        <input type="text" id="price" name="price" placeholder="900" class="form-control"
                value="<%= product != null ? product.getPrice() : "" %>">
       </div>
 
