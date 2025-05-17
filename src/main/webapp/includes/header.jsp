@@ -63,7 +63,7 @@
                     %>
 
                     <%
-                        if (!role.equals("anonymous")){
+                        if (role.equals("admin")){
                     %>
                     <li class="nav-item">
                         <a class="nav-link" href="users.jsp">
@@ -71,7 +71,12 @@
                             <span class="nav-text">Profile</span>
                         </a>
                     </li>
-
+                    <%
+                        }
+                    %>
+                    <%
+                        if (role.equals("unknown")) {
+                    %>
                     <li class="nav-item">
                         <a class="nav-link" href="cart.jsp">
                             <i class="fas fa-shopping-cart nav-icon me-2" style="display: none;"></i>
@@ -81,6 +86,7 @@
 
                     <%
                         }
+
                         if (role.equals("anonymous")) {
                     %>
                     <li class="nav-item">
