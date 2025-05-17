@@ -22,7 +22,7 @@
                 <h2 class="mb-0">User Management</h2>
             </div>
             <div class="col-md-4 text-md-end">
-                <button class="btn btn-primary"><i class="bi bi-plus-circle me-2"></i>New User</button>
+                <a href="add_user.jsp" class="btn btn-primary"><i class="bi bi-plus-circle me-2"></i>New User</a>
             </div>
         </div>
 
@@ -79,7 +79,7 @@
                         <td><%=user.getEmail()%></td>
                         <td><span class="user-status status-active"></span> <%= user.isActive() ? "ACTIVE" : "NO ACTIVE" %></td>
                         <td class="text-center">
-                            <a href="detail_user.jsp?user_id=<%=user.getId()%>" class="btn btn-sm btn-outline-primary btn-custom" data-bs-toggle="modal" data-bs-target="#userModal" data-id="1">
+                            <a href="detail_user.jsp?user_id=<%=user.getId()%>" class="btn btn-sm btn-outline-primary btn-custom">
                                 <i class="bi bi-eye me-1"></i>Detalles
                             </a>
                         </td>
