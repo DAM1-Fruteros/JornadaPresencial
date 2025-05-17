@@ -21,7 +21,7 @@
         <div class="card mb-3" style="max-width: 700px;">
             <div class="row g-0">
                 <div class="col-md-4 d-flex align-items-center justify-content-center card-image">
-                    <img src="../practicas_app_images/<%= product.getImage()%>" class="img-fluid rounded-start" style="width: 100%; height: 70%;" alt="no hay imagen disponible">
+                    <img src="../practicas_app_images/<%= product.getImage()%>" class="img-fluid rounded-start" style="width: 80%; height: 70%;" alt="no hay imagen disponible">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">

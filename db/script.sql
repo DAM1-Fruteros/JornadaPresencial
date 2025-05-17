@@ -53,8 +53,5 @@ INSERT INTO products (name, description, price, quantity, category, rate) VALUES
 
 
 INSERT INTO cart (id_user, id_product) VALUES
-               (1, 2),  -- Juan ha agregado el Smartphone al carrito
-               (2, 3),  -- María ha agregado los Headphones al carrito
-               (3, 1),  -- Carlos ha agregado la Laptop al carrito
-               (4, 4),  -- Ana ha agregado el Smartwatch al carrito
-               (5, 5);  -- Luis ha agregado la Cámara DSLR al carrito
+                                           (1, 17),
+                                           (2, 20);
