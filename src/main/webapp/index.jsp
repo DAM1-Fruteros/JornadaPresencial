@@ -39,7 +39,7 @@
                     <p class="card-text"><%= product.getDescription() %></p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <a href="detail_product.jsp?product_id=<%= product.getId()%>" class="btn btn-sm btn-outline-secondary"> Acerca del producto</a>
+                            <a href="detail_product.jsp?product_id=<%= product.getId()%>" class="btn btn-sm btn-outline-secondary"> See more</a>
                             <%
                                 if (role.equals("user")){ //si el usuario es de tipo user le pintamos el botón de comprar sino
                             %>
